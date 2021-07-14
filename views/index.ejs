@@ -1,0 +1,13 @@
+<%- include('./partials/head') %> 
+
+
+<% data.forEach(element=> { %>
+    <li>
+        <%# console.log(element) %>
+        <img src="<%= element.url %> " alt="">
+        <p><%= element.title %> </p>
+    </li>
+    <% }) %>
+
+
+<%- include('./partials/foot') %>
