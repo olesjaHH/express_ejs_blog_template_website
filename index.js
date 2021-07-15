@@ -1,26 +1,17 @@
-/* Lev1:
-Erstellt euch mit all euren bisher erlangten Kenntnissen diese Website im Backend mit Hilfe von express/ejs.
-Schaut euch das Mockup gut an und erkennt wiederholende Elemente. Für diese könnt ihr eure "partials" erstellen und diese nachher beliebig oft einsetzen.
-
-Lev2:
-Benutze "express route parameters" (req.params) um die Daten des ausgewählten Artikels abzugreifen und auf einer einzelnen article Seite näher darzustellen.
-Benutze die POST-method um die Daten des Kontaktformulars im backend zuzugreifen.
-
-Lev3:
-Generiere mit push() neue articles
- */
 const fs = require('fs')
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3003
 app.use(express.static('public'))
-const data = require('./public/data/website.json')
-console.log(data)
+const data = require('./website.json')
+//console.log(data)
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true}))
 app.set('view engine', "ejs")
 
 app.get('/', (req, res) => {
-    res.render('index', { title: "Home" })
+    res.render('index', { title: "Home", data: data })
 })
 
 app.get('/newarticle', (req, res) => {
@@ -28,67 +19,44 @@ app.get('/newarticle', (req, res) => {
 })
 
 app.get('/articledetails', (req, res) => {
-    res.render('articledetails', { title: "Article Details" })
+    res.render('articledetails', { title: "Article Details", data: data})
 })
 
 
-/* app.get('/users/:user', (req, res) => {
-    console.log(req.params.user)
+app.get('/articledetails/:detail', (req, res) => {
+    console.log(req.params.detail)
     
-    let currentUser = data.filter(ele =>
-        ele.id === Number(req.params.user))
-    console.log(currentUser.length)
-    if (currentUser.length !== 0) {
-        res.render('userDetail', { title: "Details", user: currentUser[0] })
+    let currentDetail = data.filter(ele =>
+        ele.id === Number(req.params.detail))
+    console.log(currentDetail.length)
+    if (currentDetail.length !== 0) {
+        res.render('articledetails', { title: "Details", detail: currentDetail[0] , data: data.slice(-6)})
     } else {
         res.status(404).render('404', { title: 404 })
     }
 
-}) */
+})
 
-
-let jsonData = []
-console.log(fs.existsSync('./data.json'))
-if (!fs.existsSync('./data.json')) {
-    fs.writeFile('./data.json', "[]", 'utf8', (err) => {
-        if (err) throw err
-        console.log("Datei erstellt")
-    })
-} else {
-    fs.readFile('./data.json', 'utf8', (err, data) => {
-        if (err) throw err
-        jsonData = JSON.parse(data)
-        console.log(jsonData)
-    })
-}
-
-
-
-
-app.post('/add', (req, res) => {
-    // Die Daten tauchen nicht in der URL auf, sondern werden als Payload (Nutzlast / Nutzerdaten) übermittelt
-    // Wenn wir die Middleware nicht gesetzt haben ist der body undefined
-    console.log(req)
+app.post('/newarticle', (req, res) => {
+    //console.log(req)
     console.log(req.body)
-    // res.render('show', { data: req.body })
-
-    jsonData.push({
-        message: req.body.myText,
-        tel: req.body.myNumber,
-        rating: req.body.mySelect
+    data.push({
+        id: data.length,
+        url: req.body.urlPic,
+        title: req.body.title,
+        body: req.body.article,
+        published_at: "?",
+        duration: 4,
+        author: req.body.author,
+        author_bild: req.body.authorPic,
     })
-    // jsonData.push(req.body)
 
-    fs.writeFile('./data.json', JSON.stringify(jsonData), 'utf8', (err) => {
+    fs.writeFile('./website.json', JSON.stringify(data), 'utf8', (err) => {
         if (err) throw err
     })
     res.redirect('/')
 })
-// Wir können auch die get /post / ... Methoden auf die selbe URL legen
 
-app.get('/all', (req, res) => {
-    res.render('all', { jsonData })
-})
 
 app.use((req, res) => {
     res.status(404).render('404', { title: 404 })

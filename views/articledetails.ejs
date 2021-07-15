@@ -1,6 +1,27 @@
 <%- include('./partials/head') %> 
+<%- include('./partials/navblog') %> 
+<h2><%= detail.title %> </h2>
+<img src="<%= detail.url %> " alt="">
+<div>
+    <img src="<%= detail.author_bild %> " alt="">
+    <div>
+        <h3><%= detail.author %> </h3>
+        <p><%= detail.published_at %> </p>
+        <span><%= detail.duration %> min read</span>
+    </div>
+</div>
+<p><%= detail.body %> </p>
 
+<h2>What to read next</h2>
 
-
+<% data.forEach(element => { %> 
+    <article>
+        <%# console.log(element) %>
+        <a href="/articledetails/<%= element.id %> ">
+            <img src="<%= element.url %>">
+        </a>
+        <p><%= element.title %> </p>
+    </article>
+<% }) %> 
 
 <%- include('./partials/foot') %>

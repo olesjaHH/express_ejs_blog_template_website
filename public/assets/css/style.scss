@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+/* font-family: 'Poppins', sans-serif; */
+/* font-family: 'Fira Code', monospace; */
+
+$main-black-color: #000000;
+$grey-color: #E5E5E5;
+$white-color: #FFFFFF;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -------NAV--------------- */
+#nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid $grey-color;
+    padding: 2%;
+    h1 {
+        font-weight: 300;
+        font-size: 2rem;
+        padding-left: 2%;
+    }
+    ul {
+        display: flex;
+        li {
+            list-style-type: none;
+            a {
+                text-decoration: none;
+                color: black;
+                padding-right: 90px;
+                font-family: 'Poppins', sans-serif;
+            }
+            /* a:nth-of-type(0) {
+                border-bottom: 1px solid $main-black-color;
+            } */
+        }
+    }
+}
+
+
+
+
+
+
+
+
+/* -------- Footer------------ */
+#footer {
+    background: $main-black-color;
+    color: $white-color;
+    text-align: center;
+    img {
+        padding: 2% 0 10% 0;
+    }
+    h1 {
+        font-weight: 300;
+        font-size: 2rem;
+        letter-spacing: 5px;
+    }
+    .article {
+        width: 80%;
+        padding: 3% 0 5% 20%;
+    }
+    p {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 200;
+    }
+    a {
+        text-decoration: none;
+        color: $white-color;
+        font-family: 'Fira Code', monospace;
+        padding-left: 1%;
+        font-weight: 200;
+
+    }
+    .copy {
+        padding-top: 7%;
+        font-family: 'Fira Code', monospace;
+        font-size: .8rem;
+    }
+    .rights {
+        padding-bottom: 3%;
+        font-family: 'Fira Code', monospace;
+        font-size: .8rem;
+    }
+}

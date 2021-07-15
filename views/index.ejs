@@ -1,13 +1,13 @@
 <%- include('./partials/head') %> 
+<%- include('./partials/nav') %> 
 
-
-<% data.forEach(element=> { %>
-    <li>
+<% data.forEach(element => { %> 
+    <article>
         <%# console.log(element) %>
-        <img src="<%= element.url %> " alt="">
+        <a href="/articledetails/<%= element.id %> ">
+            <img src="<%= element.url %>">
+        </a>
         <p><%= element.title %> </p>
-    </li>
-    <% }) %>
-
-
+    </article>
+<% }) %> 
 <%- include('./partials/foot') %>
