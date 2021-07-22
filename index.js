@@ -1,7 +1,7 @@
 const fs = require('fs')
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT || 3003
+const PORT = process.env.PORT || 3001
 app.use(express.static('public'))
 const data = require('./website.json')
 //console.log(data)
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/newarticle', (req, res) => {
-    res.render('newarticle', { title: "New Article" })
+    res.render('newarticle', { title: "New Article", data: data.slice(-6) })
 })
 
 app.get('/articledetails', (req, res) => {
@@ -34,7 +34,6 @@ app.get('/articledetails/:detail', (req, res) => {
     } else {
         res.status(404).render('404', { title: 404 })
     }
-
 })
 
 app.post('/newarticle', (req, res) => {

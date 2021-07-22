@@ -1,27 +1,35 @@
 <%- include('./partials/head') %> 
 <%- include('./partials/navblog') %> 
-<h2><%= detail.title %> </h2>
-<img src="<%= detail.url %> " alt="">
-<div>
-    <img src="<%= detail.author_bild %> " alt="">
-    <div>
-        <h3><%= detail.author %> </h3>
-        <p><%= detail.published_at %> </p>
-        <span><%= detail.duration %> min read</span>
+
+<section id="detail-article">
+    <h2><%= detail.title %> </h2>
+    <img src="<%= detail.url %> " alt="">
+    <div class="line"></div>
+    <div id="article-author">
+        
+        <img src="<%= detail.author_bild %> " alt="author">
+        <div>
+            <h3><%= detail.author %> </h3>
+            <p><%= detail.published_at %> . <span><%= detail.duration %> min read</span></p>
+        </div>
     </div>
-</div>
-<p><%= detail.body %> </p>
+    <p class="blog"><%= detail.body %> </p>
+</section>
 
-<h2>What to read next</h2>
-
-<% data.forEach(element => { %> 
+<section id="read-next">
+    <div class="eyes"><img src="/assets/img/eyes.png" alt="eyes"></div>
+    <h2>What to read next</h2>
     <article>
-        <%# console.log(element) %>
-        <a href="/articledetails/<%= element.id %> ">
-            <img src="<%= element.url %>">
-        </a>
-        <p><%= element.title %> </p>
+    <% data.forEach(element => { %> 
+        <figure>
+            <a href="/articledetails/<%= element.id %> ">
+                <img src="<%= element.url %>">
+            </a>
+            <p><%= element.title %> </p>
+        </figure>
+    <% }) %> 
     </article>
-<% }) %> 
+</section>
+
 
 <%- include('./partials/foot') %>

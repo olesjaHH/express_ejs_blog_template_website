@@ -25,6 +25,7 @@ $white-color: #FFFFFF;
         font-weight: 300;
         font-size: 2rem;
         padding-left: 2%;
+        letter-spacing: 5px;
     }
     ul {
         display: flex;
@@ -32,31 +33,211 @@ $white-color: #FFFFFF;
             list-style-type: none;
             a {
                 text-decoration: none;
-                color: black;
-                padding-right: 90px;
+                color: $main-black-color;
+                margin-right: 90px;
                 font-family: 'Poppins', sans-serif;
+                font-weight: 500;
             }
-            /* a:nth-of-type(0) {
-                border-bottom: 1px solid $main-black-color;
-            } */
+        }
+        li:first-of-type a {
+            border-bottom: 2px solid black;
+            padding: 0 7px 24px 7px;
+        }
+    }
+}
+#nav2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid $grey-color;
+    padding: 2%;
+    h1 {
+        font-weight: 300;
+        font-size: 2rem;
+        padding-left: 2%;
+        letter-spacing: 5px;
+    }
+    ul {
+        display: flex;
+        li {
+            list-style-type: none;
+            a {
+                text-decoration: none;
+                color: $main-black-color;
+                margin-right: 90px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+            }
+        }
+        li:nth-of-type(2) a {
+            border-bottom: 2px solid black;
+            padding: 0 7px 24px 7px;
         }
     }
 }
 
+/* --------Home----------------- */
 
+#main-article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5% 15%;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    img:first-child {
+        width: 80%;
+    }
+    div:first-of-type p {
+        font-size: 2rem;
+        width: 80%;
+        padding-left: 15%;
+        margin-bottom: 10%;
+    }
+    img {
+        width: 100%;
+    }
+    h1 {
+        grid-area: 2/1/3/3;
+        border-top: 2px solid $main-black-color;
+        padding: 4vh 0 2vh;
+    }
+    div:first-of-type {
+        grid-area: 1/1/2/3;
+        font-size: 3.4em;
+        font-weight: 800;
+    }
+    div:not(:first-of-type) p {
+        width: 80%;
+        padding-left: 15%;
+        margin: 3% 0;
+        font-family: 'Fira Code', monospace; 
+        font-weight: 600;
+    }
+}
 
+/* New Article */
+#new-article {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    h2 {
+        margin: 5% 0 0 0;
+    }
+    div {
+        content: "";
+        width: 40px;
+        height: 2px;
+        background-color: $main-black-color;
+        margin-left: 49%;
+        margin-bottom: 2%;
+    }
+    form {
 
+        input {
+            width: 80%;
+            outline-style: none;
+            border-style: none;
+            background: $grey-color;
+            padding: 1%;
+            margin: 5px;
+        }
+        input:last-of-type {
+            background: $main-black-color;
+            color: $white-color;
+        }
+    }
+}
+#read-next {
+    text-align: center;
+    div:nth-of-type(1) {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: $main-black-color;
+        margin: 5% 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 50px;
+        }
+    }
+    h2 {
+        font-family: 'Poppins', sans-serif;
+    }
+    article {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        column-gap: 20px;
+        margin-left: 5%;
+        padding: 3% 5%;
+        figure {
+            
+            a img {
+                width: 90%;
+            }
+            p {
+                width: 90%;
+                margin-left: 5%;
+                font-family: 'Fira Code', monospace; 
+            }
+        }
+    }
+}
+/* Blog/ article details */
+#detail-article {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    h2 {
+        width: 70%;
+        margin: 2% 0 7% 15%;
+        font-size: 3rem;
+        line-height: 2.8rem;
+    }
+    img {
+        width: 100%;
+    }
+    .line {
+        content: "";
+        width: 60%;
+        height: 2px;
+        background: $main-black-color;
+        margin: 3% 0 3% 20%;
+    }
+    #article-author {
+        width: 60%;
+        margin-left: 20%;
+        display: flex;
+        font-family: 'Fira Code', monospace;
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 2%;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+        }
+    }
+    .blog {
+        width: 60%;
+        margin: 3% 0 3% 20%;
+        text-align: left;
 
-
-
+    }
+}
 
 /* -------- Footer------------ */
 #footer {
     background: $main-black-color;
     color: $white-color;
     text-align: center;
+    font-family: 'Fira Code', monospace;
     img {
-        padding: 2% 0 10% 0;
+        padding: 2% 0 8% 0;
     }
     h1 {
         font-weight: 300;
@@ -74,19 +255,122 @@ $white-color: #FFFFFF;
     a {
         text-decoration: none;
         color: $white-color;
-        font-family: 'Fira Code', monospace;
         padding-left: 1%;
         font-weight: 200;
 
     }
     .copy {
         padding-top: 7%;
-        font-family: 'Fira Code', monospace;
         font-size: .8rem;
     }
     .rights {
         padding-bottom: 3%;
-        font-family: 'Fira Code', monospace;
         font-size: .8rem;
     }
+}
+
+/* ----- media queries----- */
+
+/* Mobile */
+@media screen and (max-width: 576px) {
+    /* -------NAV--------------- */
+#nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid $grey-color;
+    padding: 2%;
+    h1 {
+        font-weight: 300;
+        font-size: 1rem;
+        padding-left: 2%;
+        letter-spacing: 5px;
+    }
+    ul {
+        display: flex;
+        li {
+            list-style-type: none;
+            a {
+                text-decoration: none;
+                color: $main-black-color;
+                margin-right: 90px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+            }
+        }
+        li:first-of-type a {
+            border-bottom: 2px solid black;
+            padding: 0 7px 24px 7px;
+        }
+    }
+}
+#nav2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid $grey-color;
+    padding: 2%;
+    h1 {
+        font-weight: 300;
+        font-size: 2rem;
+        padding-left: 2%;
+        letter-spacing: 5px;
+    }
+    ul {
+        display: flex;
+        li {
+            list-style-type: none;
+            a {
+                text-decoration: none;
+                color: $main-black-color;
+                margin-right: 90px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+            }
+        }
+        li:nth-of-type(2) a {
+            border-bottom: 2px solid black;
+            padding: 0 7px 24px 7px;
+        }
+    }
+}
+
+/* --------Home----------------- */
+
+#main-article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5% 15%;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    img:first-child {
+        width: 80%;
+    }
+    div:first-of-type p {
+        font-size: 2rem;
+        width: 80%;
+        padding-left: 15%;
+        margin-bottom: 10%;
+    }
+    img {
+        width: 100%;
+    }
+    h1 {
+        grid-area: 2/1/3/3;
+        border-top: 2px solid $main-black-color;
+        padding: 4vh 0 2vh;
+    }
+    div:first-of-type {
+        grid-area: 1/1/2/3;
+        font-size: 3.4em;
+        font-weight: 800;
+    }
+    div:not(:first-of-type) p {
+        width: 80%;
+        padding-left: 15%;
+        margin: 3% 0;
+        font-family: 'Fira Code', monospace; 
+        font-weight: 600;
+    }
+}
 }

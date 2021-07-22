@@ -1,15 +1,32 @@
 <%- include('./partials/head') %> 
-<%- include('./partials/nav') %> 
+<%- include('./partials/navNewArticle') %> 
 
-<h2>ADD NEW ARTICLE</h2>
-<form action="/newarticle" method="post">
-    <input type="text" name="title" placeholder="Title" required> <br>
-    <input type="url" name="urlPic" placeholder="Url Picture"> <br>
-    <input type="text" name="author" placeholder="Author"> <br>
-    <input type="text" name="authorPic" placeholder="Author Picture"> <br>
-    <input type="text" name="article" id="article" placeholder="Write your article here..."> <br>
-    <input type="submit" value="SEND ARTICLE">
-</form>
+<section id="new-article">
+    <h2>ADD NEW ARTICLE</h2>
+    <div></div>
+    <form action="/newarticle" method="post">
+        <input type="text" name="title" placeholder="Title" required> <br>
+        <input type="url" name="urlPic" placeholder="Url Picture"> <br>
+        <input type="text" name="author" placeholder="Author"> <br>
+        <input type="text" name="authorPic" placeholder="Author Picture"> <br>
+        <input type="text" name="article" id="article" placeholder="Write your article here..."> <br>
+        <input type="submit" value="SEND ARTICLE">
+    </form>
+</section>
+<section id="read-next">
+    <div class="eyes"><img src="/assets/img/eyes.png" alt="eyes"></div>
+    <h2>What to read next</h2>
+    <article>
+    <% data.forEach(element => { %> 
+        <figure>
+            <a href="/articledetails/<%= element.id %> ">
+                <img src="<%= element.url %>">
+            </a>
+            <p><%= element.title %> </p>
+        </figure>
+    <% }) %> 
+    </article>
+</section>
 
 
 <%- include('./partials/foot') %>
